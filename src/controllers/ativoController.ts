@@ -10,7 +10,7 @@ const getById = async (req: Request, res: Response) => {
   console.log('id', id);
   const response = await ativoService.getById(+id);
   if (response.payload) {
-    return res.status(response.status).json(response.payload || response.message);
+    return res.status(response.status).json(response.payload);
   }
   const { message } = response;
   return res.status(response.status).json({ message });
