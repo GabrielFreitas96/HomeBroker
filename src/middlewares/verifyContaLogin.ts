@@ -7,12 +7,12 @@ const verifyContaLogin = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const { codConta } = req.body;
-  console.log('codConta', codConta);
-  const isConta = await contaModel.getByConta(+codConta);
+  const { contaCliente } = req.body;
+  console.log('contaCliente', contaCliente);
+  const isConta = await contaModel.getByConta(+contaCliente);
   console.log(isConta);
   if (!isConta) {
-    return res.status(ObjCode.NOT_FOUND).json(`A "codConta" ${codConta} was not found`);
+    return res.status(ObjCode.NOT_FOUND).json({ mesage: `A "contaCliente" ${contaCliente} was not found` });
   }
   return next();
 };
