@@ -28,7 +28,7 @@
         "no-console": "off",
         "complexity": [
             "error",
-            5
+            8
           ],
           "arrow-parens": [
             2,

@@ -15,6 +15,9 @@ const contaPasswordLogin = (req: Request, res: Response, next: NextFunction) => 
   if (typeof password !== 'string') {
     return res.status(ObjCode.INCORRECT_TYPE).json({ mesage: '"password" must be a string' });
   }
+  if (password.length < 6) {
+    return res.status(ObjCode.INCORRECT_TYPE).json({ mesage: '"password" must have minimum 6 character' });
+  }
   return next();
 };
 
