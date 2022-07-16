@@ -12,7 +12,7 @@ const verifyContaLogin = async (
   const isConta = await contaModel.getByConta(+codConta);
   console.log(isConta);
   if (!isConta) {
-    return res.status(ObjCode.NOT_FOUND).json(`A conta ${codConta} não foi encontrada`);
+    return res.status(ObjCode.NOT_FOUND).json(`A "codConta" ${codConta} was not found`);
   }
   return next();
 };
