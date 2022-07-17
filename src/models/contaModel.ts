@@ -1,5 +1,6 @@
 import { ResultSetHeader } from 'mysql2';
 import IConta from '../interfaces/IConta';
+import IContaSaldo from '../interfaces/ISaldoConta';
 import connection from './connection';
 
 const getByConta = async (conta: number): Promise<boolean> => {
@@ -19,5 +20,14 @@ const addConta = async (conta: number):Promise<ResultSetHeader> => {
   return result;
 };
 
-const contaModel = { getByConta, addConta };
+const getByCodCliente = async (codCliente: number): Promise<IContaSaldo[]> => {
+  const query = `SELECT Clientes.CodCliente, Contas.Saldo FROM DadosXp.Clientes
+  INNER JOIN DadosXp.Contas ON Clientes.contaCliente = Contas.codConta
+  WHERE Clientes.CodCliente = ?`;
+  const [result] = await connection.execute(query, [codCliente]);
+  // console.log(result);
+  return result as IContaSaldo[];
+};
+
+const contaModel = { getByConta, addConta, getByCodCliente };
 export default contaModel;
