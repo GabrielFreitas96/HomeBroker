@@ -12,14 +12,12 @@ const addCliente = async (newcliente: ICliente):Promise<IObjResponse> => {
     return response;
   }
   const passwordHash = generateCryptPassword(newcliente.passwordCliente);
-  const clienteBD = { ...newcliente, clientePassword: passwordHash };
-  console.log('clienteBD', clienteBD);
-  const { insertId } = await clienteModel.addUser(clienteBD);
+  const { insertId } = await clienteModel.addUser(newcliente, passwordHash);
   if (!insertId) {
     const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
     return response;
   }
-  const { nameCliente, emailCliente, contaCliente } = clienteBD;
+  const { nameCliente, emailCliente, contaCliente } = newcliente;
   const payload = [{
     codCliente: insertId, nameCliente, emailCliente, contaCliente,
   }];

@@ -9,13 +9,14 @@ const getClient = async (contaCliente:number): Promise<ICliente[]> => {
   return result as ICliente[];
 };
 
-const addUser = async (cliente: ICliente):Promise<ResultSetHeader> => {
+const addUser = async (cliente: Omit<ICliente, 'passwordCliente'>, hash: string):Promise<ResultSetHeader> => {
   const query = 'INSERT INTO DadosXp.Clientes (nameCliente, emailCliente, passwordCliente, contaCliente) VALUE (?, ?, ?, ?)';
   const {
-    nameCliente, emailCliente, passwordCliente, contaCliente,
+    nameCliente, emailCliente, contaCliente,
   } = cliente;
+  console.log('password no model', hash);
   const [result] = await connection
-    .execute<ResultSetHeader>(query, [nameCliente, emailCliente, passwordCliente, contaCliente]);
+    .execute<ResultSetHeader>(query, [nameCliente, emailCliente, hash, contaCliente]);
   return result;
 };
 const clienteModel = { getClient, addUser };
