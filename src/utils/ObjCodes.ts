@@ -6,6 +6,7 @@ const ObjCode = {
   MISSING_FIELDS: 400,
   INCORRECT_TYPE: 422,
   ALREADY_EXISTS: 409,
+  GENERAL: 500,
 };
 
 export default ObjCode;
