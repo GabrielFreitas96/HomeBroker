@@ -5,6 +5,7 @@ const ObjCode = {
   UNAUTHORIZED: 401,
   MISSING_FIELDS: 400,
   INCORRECT_TYPE: 422,
+  ALREADY_EXISTS: 409,
 };
 
 export default ObjCode;
