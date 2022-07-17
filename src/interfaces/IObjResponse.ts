@@ -2,7 +2,7 @@ interface IObjResponse {
   status: number;
   message?: string;
   token?: string
-  payload?: [];
+  payload?: any[];
 }
 
 export default IObjResponse;
