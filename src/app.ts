@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import ativoRouter from './routers/ativoRouter';
 import clienteRouter from './routers/clienteRouter';
+import contaRouter from './routers/contaRouter';
 import loginRouter from './routers/loginRouter';
 
 const app = express();
@@ -15,5 +16,6 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/ativo', ativoRouter);
 app.use('/login', loginRouter);
 app.use('/cliente', clienteRouter);
+app.use('/conta', contaRouter);
 
 export default app;
