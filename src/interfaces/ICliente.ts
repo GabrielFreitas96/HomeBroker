@@ -1,5 +1,5 @@
 interface ICliente {
-  codCliente: number;
+  codCliente?: number;
   nameCliente: string;
   emailCliente: string;
   passwordCliente: string;
