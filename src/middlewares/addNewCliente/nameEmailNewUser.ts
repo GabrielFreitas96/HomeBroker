@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import ObjCode from '../../utils/ObjCodes';
 
-const namePasswordNewUser = (req: Request, res: Response, next: NextFunction) => {
+const nameEmailNewUser = (req: Request, res: Response, next: NextFunction) => {
   const { nameCliente, emailCliente } = req.body;
   if (!nameCliente) {
     return res.status(ObjCode.MISSING_FIELDS).json({ mesage: '"name" is undefined' });
@@ -18,10 +18,11 @@ const namePasswordNewUser = (req: Request, res: Response, next: NextFunction) =>
   if (typeof emailCliente !== 'string') {
     return res.status(ObjCode.INCORRECT_TYPE).json({ mesage: '"email must be a string' });
   }
-  if (emailCliente.length < 6) {
-    return res.status(ObjCode.INCORRECT_TYPE).json({ mesage: '"email must have minimum 6 character' });
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailCliente)) {
+    return res.status(ObjCode.MISSING_FIELDS).json({ mesage: '"email" must be a valid email' });
   }
   return next();
 };
 
-export default namePasswordNewUser;
+export default nameEmailNewUser;
