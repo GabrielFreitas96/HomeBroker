@@ -8,7 +8,7 @@ const secret = 'mysecret' || process.env.JTW_SECRET;
 
 const decodeToken = (token:string): jwt.JwtPayload => {
   const decoded = jwt.verify(token, secret);
-  console.log(decoded);
+  // console.log('adsadsdsds', decoded);
   return decoded as jwt.JwtPayload;
 };
 

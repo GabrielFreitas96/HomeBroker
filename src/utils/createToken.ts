@@ -12,7 +12,13 @@ const jwtConfig: jwt.SignOptions = {
 };
 
 const generateToken = (payload: Omit<ICliente, 'passwordCliente'>) => {
-  const token = jwt.sign({ payload }, secret, jwtConfig);
+  const {
+    codCliente, nameCliente, emailCliente, contaCliente,
+  } = payload;
+  const token = jwt
+    .sign({
+      codCliente, nameCliente, emailCliente, contaCliente,
+    }, secret, jwtConfig);
   return token;
 };
 
