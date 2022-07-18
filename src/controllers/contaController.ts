@@ -12,5 +12,14 @@ const getByCodCliente = async (req: Request, res: Response): Promise<Response> =
   return res.status(response.status).json({ message });
 };
 
-const contaController = { getByCodCliente };
+const contaDeposito = async (req: Request, res: Response): Promise<Response> => {
+  const { codCliente, valor } = req.body;
+  const response = await contaService.contaDeposito(+codCliente, +valor);
+  const { message } = response;
+  if (response.payload) {
+    return res.status(response.status).json(response.payload);
+  }
+  return res.status(response.status).json({ message });
+};
+const contaController = { getByCodCliente, contaDeposito };
 export default contaController;
