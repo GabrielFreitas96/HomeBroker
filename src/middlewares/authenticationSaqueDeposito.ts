@@ -5,9 +5,9 @@ import decodeToken from '../utils/decodeToken';
 
 dotenv.config();
 
-const authentication = (req: Request, res: Response, next: NextFunction) => {
+const authenticationSaqueDeposito = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
-  const { id } = req.params;
+  const { codCliente } = req.body;
   // console.log('id', typeof id);
   // console.log('token no middleware verify', token);
   if (!token) {
@@ -21,7 +21,7 @@ const authentication = (req: Request, res: Response, next: NextFunction) => {
     // console.log('adsd', typeof codCliente);
     // console.log('decoded', decoded);
     // console.log(decoded.payload.codCliente);
-    if (decoded.codCliente !== +id) {
+    if (decoded.codCliente !== +codCliente) {
       // console.log('entrou no if');
       return res.status(ObjCode.UNAUTHORIZED).json({ message: 'Unauthorized client' });
     }
@@ -31,4 +31,4 @@ const authentication = (req: Request, res: Response, next: NextFunction) => {
   return next();
 };
 
-export default authentication;
+export default authenticationSaqueDeposito;
