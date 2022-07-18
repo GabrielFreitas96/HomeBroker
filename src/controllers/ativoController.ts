@@ -16,5 +16,16 @@ const getById = async (req: Request, res: Response) => {
   return res.status(response.status).json({ message });
 };
 
-const ativoController = { getAll, getById };
+const getByClienteId = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  console.log('id', id);
+  const response = await ativoService.getByClienteId(+id);
+  if (response.payload) {
+    return res.status(response.status).json(response.payload);
+  }
+  const { message } = response;
+  return res.status(response.status).json({ message });
+};
+
+const ativoController = { getAll, getById, getByClienteId };
 export default ativoController;
