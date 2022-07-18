@@ -17,7 +17,7 @@ const getById = async (id: number): Promise<IAtivo[] | []> => {
 };
 
 const getByClienteId = async (id: number): Promise<IAtivoCliente[] | []> => {
-  const query = `SELECT Clientes.codCliente, ClientesAtivos.codAtivo, ClientesAtivos.qtdeClienteAtivo FROM DadosXp.Clientes
+  const query = `SELECT Clientes.codCliente, ClientesAtivos.codAtivo,  Ativos.nameAtivo, ClientesAtivos.qtdeClienteAtivo, Ativos.valor FROM DadosXp.Clientes
   INNER JOIN DadosXp.ClientesAtivos ON Clientes.codCliente = ClientesAtivos.codCliente
   INNER JOIN DadosXp.Ativos ON  ClientesAtivos.codAtivo = Ativos.codAtivo
   WHERE Clientes.CodCliente = ?;`;
