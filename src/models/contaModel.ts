@@ -21,13 +21,29 @@ const addConta = async (conta: number):Promise<ResultSetHeader> => {
 };
 
 const getByCodCliente = async (codCliente: number): Promise<IContaSaldo[]> => {
-  const query = `SELECT Clientes.CodCliente, Contas.Saldo FROM DadosXp.Clientes
+  const query = `SELECT Clientes.codCliente, Contas.saldo FROM DadosXp.Clientes
   INNER JOIN DadosXp.Contas ON Clientes.contaCliente = Contas.codConta
-  WHERE Clientes.CodCliente = ?`;
+  WHERE Clientes.codCliente = ?`;
   const [result] = await connection.execute(query, [codCliente]);
   // console.log(result);
   return result as IContaSaldo[];
 };
+const getContaByCodCliente = async (codCliente: number): Promise<IConta[]> => {
+  const query = `SELECT Contas.codConta, Contas.saldo FROM DadosXp.Clientes
+  INNER JOIN DadosXp.Contas ON Clientes.contaCliente = Contas.codConta
+  WHERE Clientes.codCliente = ?`;
+  const [result] = await connection.execute(query, [codCliente]);
+  // console.log(result);
+  return result as IConta[];
+};
+const updateSaldo = async (codConta: number, saldo: number): Promise<ResultSetHeader> => {
+  const query = 'UPDATE DadosXp.Contas SET Contas.saldo = ? WHERE codConta = ?';
+  const [result] = await connection.execute<ResultSetHeader>(query, [saldo, codConta]);
+  // console.log(result);
+  return result;
+};
 
-const contaModel = { getByConta, addConta, getByCodCliente };
+const contaModel = {
+  getByConta, addConta, getByCodCliente, getContaByCodCliente, updateSaldo,
+};
 export default contaModel;
