@@ -1,4 +1,4 @@
- DROP DATABASE IF EXISTS DadosXp;
+DROP DATABASE IF EXISTS DadosXp;
 
 CREATE DATABASE DadosXp;
 CREATE TABLE DadosXp.Contas(
@@ -18,15 +18,15 @@ CREATE TABLE DadosXp.Clientes(
 codCliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nameCliente  VARCHAR(100) NOT NULL,
 emailCliente VARCHAR(30) NOT NULL,
-passwordCliente VARCHAR(15) NOT NULL,
+passwordCliente VARCHAR(300) NOT NULL,
 contaCliente BIGINT NOT NULL,
 FOREIGN KEY (contaCliente) REFERENCES DadosXp.Contas(codConta)
 ) engine = InnoDB;
 INSERT INTO DadosXp.Clientes(nameCliente, emailCliente, passwordCliente, contaCliente)
 VALUES
-( 'Gabriel Freitas', 'gabrielfreitas@gmail.com', '123456', 12345),
-('José Almeida', 'josealmeida@gmail.com', 'abcdef', 23456),
-('Lucas Ferreira','lucasferreira@gmail.com','a1b2c3d4', 34567);
+( 'Gabriel Freitas', 'gabrielfreitas@gmail.com', '$2b$05$BMNlmRoMKQxqgS.EZkAI.OjjAX2NneGWyNCQP0dH1ubdFP5F2HfmK', 12345),
+('José Almeida', 'josealmeida@gmail.com', '$2b$05$KD8NA1V5SIqyjnTGmgngc.RRLSRtCxWuPbrUR429dKYqZUUV7jb46', 23456),
+('Lucas Ferreira','lucasferreira@gmail.com','$2b$05$/m2wUGoaMKtVanarYXPN3ewV2.DQNPT1hoZaoc/2YvuCd3U70387O', 34567);
 
 CREATE TABLE DadosXp.Ativos (
 codAtivo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
