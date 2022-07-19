@@ -1,3 +1,4 @@
+import { ResultSetHeader } from 'mysql2';
 import IAtivo from '../interfaces/IAtivo';
 import IAtivoCliente from '../interfaces/IAtivoCliente';
 import connection from './connection';
@@ -22,8 +23,18 @@ const getByClienteId = async (id: number): Promise<IAtivoCliente[] | []> => {
   INNER JOIN DadosXp.Ativos ON  ClientesAtivos.codAtivo = Ativos.codAtivo
   WHERE Clientes.CodCliente = ?;`;
   const [result] = await connection.execute(query, [id]);
-  console.log('result', result);
+  console.log('getByClienteId', result);
   return result as IAtivoCliente[];
 };
-const ativoModel = { getAll, getById, getByClienteId };
+
+const updateAtivoQtde = async (codAtivo: number, qtde: number): Promise<ResultSetHeader> => {
+  const query = 'UPDATE DadosXp.Ativos SET Ativos.qtdeAtivo = ? WHERE codAtivo = ?;';
+  const [result] = await connection.execute<ResultSetHeader>(query, [qtde, codAtivo]);
+  // console.log(result);
+  return result;
+};
+
+const ativoModel = {
+  getAll, getById, getByClienteId, updateAtivoQtde,
+};
 export default ativoModel;
