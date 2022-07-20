@@ -1,4 +1,6 @@
 import express, { Request, Response } from 'express';
+import 'express-async-errors';
+import middlewareEror from './middlewares/middlewareError';
 import ativoRouter from './routers/ativoRouter';
 import clienteRouter from './routers/clienteRouter';
 import contaRouter from './routers/contaRouter';
@@ -19,5 +21,6 @@ app.use('/login', loginRouter);
 app.use('/cliente', clienteRouter);
 app.use('/conta', contaRouter);
 app.use('/investimento', investimentoRouter);
+app.use(middlewareEror);
 
 export default app;
