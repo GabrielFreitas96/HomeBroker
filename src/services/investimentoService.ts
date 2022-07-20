@@ -2,7 +2,6 @@ import IObjResponse from '../interfaces/IObjResponse';
 import ativoModel from '../models/ativoModel';
 // import ativoModel from '../models/ativoModel';
 import clienteAtivoModel from '../models/clienteAtivoModel';
-import clienteModel from '../models/clienteModel';
 import contaModel from '../models/contaModel';
 import ObjCode from '../utils/ObjCodes';
 
