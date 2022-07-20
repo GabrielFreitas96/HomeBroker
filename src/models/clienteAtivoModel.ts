@@ -27,7 +27,16 @@ const updateClienteAtivo = async (idCliente: number, idAtivo:number, qtde:number
   console.log('result', result);
   return result;
 };
+const createClienteAtivo = async (idCliente: number, idAtivo:number, qtde:number)
+: Promise<ResultSetHeader> => {
+  const query = 'INSERT INTO DadosXp.ClientesAtivos (codCliente, codAtivo, qtdeClienteAtivo) VALUE (?, ?, ?)';
+  const [result] = await connection.execute<ResultSetHeader>(query, [idCliente, idAtivo, qtde]);
+  console.log('createClienteAtivo', result);
+  return result;
+};
 
-const clienteAtivoModel = { getByClienteIdAtivoId, deleteClienteAtivo, updateClienteAtivo };
+const clienteAtivoModel = {
+  getByClienteIdAtivoId, deleteClienteAtivo, updateClienteAtivo, createClienteAtivo,
+};
 
 export default clienteAtivoModel;
