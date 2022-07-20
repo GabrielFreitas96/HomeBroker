@@ -23,6 +23,7 @@ const sellAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number
   const saldoOperation = qtdeAtivo * findClienteAtivo[0].valor;
   const newSaldo = Math.round((+saldo + saldoOperation) * 100) / 100;
   const newqtdeCorretora = +qtdeAtivoCorretora + qtdeAtivo;
+  const newQtdeCliente = findClienteAtivo[0].qtdeAtivo - qtdeAtivo;
   console.log('novo saldo', newSaldo);
   console.log('saldo a ser adicionado na carteira', saldoOperation);
   console.log('nova quantidade na corretora', newqtdeCorretora);
@@ -50,7 +51,7 @@ const sellAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number
     const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
     return response;
   }
-  const updated = await clienteAtivoModel.updateClienteAtivo(codCliente, codAtivo, qtdeAtivo);
+  const updated = await clienteAtivoModel.updateClienteAtivo(codCliente, codAtivo, newQtdeCliente);
   if (updated.affectedRows !== 1) {
     const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
     return response;
