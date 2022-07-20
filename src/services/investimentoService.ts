@@ -63,5 +63,49 @@ const sellAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number
   const response:IObjResponse = { status: ObjCode.OK, payload: [{}] };
   return response;
 };
-const investimentoService = { sellAtivos };
+
+const buyAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number):
+ Promise<IObjResponse> => {
+  const findClienteAtivo = await clienteAtivoModel.getByClienteIdAtivoId(codCliente, codAtivo);
+  if (findClienteAtivo.length === 0) {
+    const response:IObjResponse = { status: ObjCode.NOT_FOUND, message: `O id of client ${codCliente} or id of asset was not found` };
+    return response;
+  }
+  const ativoTarget = await ativoModel.getById(+codAtivo);
+  if (ativoTarget[0].qtdeAtivo <= qtdeAtivo) {
+    const response:IObjResponse = { status: ObjCode.NOT_FOUND, message: `"qtdeAtivo" ${qtdeAtivo} is invalid to buy` };
+    return response;
+  }
+  const [{ codConta, saldo }] = await contaModel.getContaByCodCliente(codCliente);
+  const [{ qtdeAtivo: qtdeAtivoCorretora, valor }] = await ativoModel.getById(codAtivo);
+  console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
+  console.log('conta Cliente', codConta, saldo);
+  const saldoOperation = qtdeAtivo * valor;
+  if (saldoOperation > saldo) {
+    const response:IObjResponse = { status: ObjCode.INCORRECT_TYPE, message: 'Insufficient Funds' };
+    return response;
+  }
+  const newSaldo = Math.round((+saldo - saldoOperation) * 100) / 100;
+  const newQtdeCorretora = +qtdeAtivoCorretora - qtdeAtivo;
+  const newQtdeCliente = findClienteAtivo[0].qtdeAtivo + qtdeAtivo;
+  const { affectedRows } = await contaModel.updateSaldo(codConta, newSaldo);
+  if (affectedRows !== 1) {
+    const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
+    return response;
+  }
+  const updated = await clienteAtivoModel.updateClienteAtivo(codCliente, codAtivo, newQtdeCliente);
+  if (updated.affectedRows !== 1) {
+    const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
+    return response;
+  }
+  const updateAtivo = await ativoModel.updateAtivoQtde(codAtivo, newQtdeCorretora);
+  if (updateAtivo.affectedRows !== 1) {
+    const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
+    return response;
+  }
+  const response:IObjResponse = { status: ObjCode.OK, payload: [{ }] };
+  return response;
+};
+
+const investimentoService = { sellAtivos, buyAtivos };
 export default investimentoService;
