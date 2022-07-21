@@ -37,3 +37,15 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 > Para melhor utilização, tenha em mente a utilização atráves do insomnia ou Postman, para fazer as requisições.
 > O token é gerado no momento em que se faz o login POST /login. OBS: Ao cadastrar um cliente novo, não será gerado um token,apenas ao se fazer o login.
 > A maior parte das requisições requer a utilização de um token no headers. A chave a ser criada no header é `authorization` e nela deve se inserir o Token gerado no momento de fazer o Login.
+
+
+<details>
+  <summary  id="diagrama"><strong>🎲 Diagrama ER e Entidades</strong></summary>
+
+  #### Diagrama de Entidade-Relacionamento
+
+  Contrução das tabelas e seus relacionamentos para desenvolvimento desse projeto:
+
+  ![DER](./Modelagem.png)
+
+  ---
