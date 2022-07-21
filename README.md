@@ -55,7 +55,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 <details>
   <summary  id="diagrama"><strong>/cliente</strong></summary>
 
-  #### POST no endpoint /cliente
+  #### POST  /cliente
   Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas, salva a senha criptografada no banco de dados (bCrypt)
   
   Body a ser enviado na requisição
@@ -109,7 +109,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 <details>
   <summary  id="diagrama"><strong>/login</strong></summary>
 
-  #### POST no endpoint /login
+  #### POST  /login
   Efetua o login de usuário, gerando um token de autenticação, a comparação de senha é feita com a biblioteca bcrypt
   
   Body a ser enviado na requisição
@@ -157,7 +157,8 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
 <details>
   <summary  id="diagrama"><strong>/ativos</strong></summary>
-  #### GET no endpoint /ativo
+
+  #### GET /ativo
   Busca todos os ativos disponivéis na tabela Ativo para serem comercializadas retorno do tipo:
 
   ```
@@ -188,7 +189,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
       }
     ]
   ```
-  #### GET no endpoint /ativo:id
+  #### GET  /ativo:id
   Busca o ativo correspondente ao id passado na rota
   ```
   [
@@ -209,7 +210,9 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   ```
   #### GET no endpoint /ativo/cliente:id
+  Nesse caso, necessita de uim token de autenticação do cliente referente ao id
   Retorna todos os ativos que pertencem ao cliente do id enviado, essa rota precisa de um token, deve ser inserir o mesmo nas rotas
+  
    ```
     [
     {
