@@ -99,7 +99,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Caso o usuário já tenha uma conta cadastrada, o retorno será do tipo:
   ```
  "A \"contaCliente\" 78910 already exists"
-  ``
+  ```
 </details>
 
 
