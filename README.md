@@ -76,8 +76,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 > contaCliente : 
 * não pode  ser nulo ou undefined
 * deve ser um numero
-* não deve existir no banco de dados (feito): verifyContaExist
-
+* não deve existir no banco de dados 
 > emailCliente :
 * não pode  ser nulo ou undefined
 * deve ser uma string
