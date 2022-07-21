@@ -47,7 +47,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Contrução das tabelas e seus relacionamentos para desenvolvimento desse projeto:
 
   ![DER](./Modelagem.png)
-
+<details/>
   ```
   {
     "displayName": "",
