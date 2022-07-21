@@ -205,14 +205,14 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Caso o id não correponda a nenhum produto retorna a mensagem:
   ```
   {
-    "message": "O id 10 was not found"
+    "message": "O id ${codAtivo} was not found"
   }
 
   ```
   #### GET no endpoint /ativo/cliente:id
   Nesse caso, necessita de uim token de autenticação do cliente referente ao id
   Retorna todos os ativos que pertencem ao cliente do id enviado, essa rota precisa de um token, deve ser inserir o mesmo nas rotas
-  
+
    ```
     [
     {
@@ -250,6 +250,88 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   ```
   {
 	  "message": "O id 4 was not found with any assets"
+  }
+  ```
+  </details>
+
+  <details>
+  <summary  id="diagrama"><strong>/conta</strong></summary>
+
+  #### PUT /conta/deposito
+
+  Body a ser enviado na requisição
+  ```
+  {
+  "codCliente":  4
+  "valor":  10000 
+  }
+
+  ```
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
+
+  > codCliente: 
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+
+  > valor:
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+  * deve ser maior que 0
+
+  Se o cod do cliente enviado não estiver cadastrado retorna:
+  ```
+  {
+    "message": "O id ${codCliente} was not found"
+  }
+  
+  ```
+  Se tudo der certo apresenta o retorno do saldo do Cliente
+  
+  ```
+  {
+    "codCliente":  4
+    "valor":  10000 
+  }
+  ```
+  #### PUT /conta/saque
+
+  Body a ser enviado na requisição
+  ```
+  {
+  "codCliente":  4
+  "valor":  10000 
+  }
+
+  ```
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
+
+  > codCliente: 
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+
+  > valor:
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+  * deve ser maior que 0
+
+  Se o cod do cliente enviado não estiver cadastrado retorna a mensagem:
+  ```
+  {
+    "message": "O id ${codCliente} was not found"
+  }
+  
+  ```
+  Se o valor a ser sacado for maior que o saldo disponível retorna a mensagem:
+  ```
+  {
+	"message": "Insufficient Funds"
+  }
+  ```
+  Se tudo der certo apresenta o retorno do saldo do Cliente
+  ```
+  {
+    "codCliente":  4
+    "valor":  10000 
   }
   ```
   </details>
