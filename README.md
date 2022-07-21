@@ -47,5 +47,62 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Contrução das tabelas e seus relacionamentos para desenvolvimento desse projeto:
 
   ![DER](./Modelagem.png)
+</details>
 
-  ---
+## EndPoints da API e os Verbos
+
+
+<details>
+  <summary  id="diagrama"><strong>/cliente</strong></summary>
+
+  #### POST no endpoint /cliente
+  Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas
+  
+  Body a ser enviado na requisição
+  ```
+  {
+    "nameCliente": "Fernando Ribeiro",
+    "emailCliente": "fernando@outlook.com",
+    "passwordCliente": "123456",
+    "contaCliente": 78910
+  }
+  ```
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
+	
+> nameCliente :
+* não pode  ser nulo ou undefined
+* deve ser string
+* dever ter pelo menos 8 caracteres
+
+> contaCliente : 
+* não pode  ser nulo ou undefined
+* deve ser um numero
+* não deve existir no banco de dados 
+> emailCliente :
+* não pode  ser nulo ou undefined
+* deve ser uma string
+* deve passar pelo formato regex @ e .com
+
+> passwordCliente : 
+* não pode  ser nulo ou undefined
+* deve ser uma string
+* deve ter pelo menos 6 caracteres 
+> O retorno será algo do tipo :
+  ```[
+	{
+		"codCliente": 4,
+		"nameCliente": "Fernado Ribeiro",
+		"emailCliente": "fernando@outlook.com",
+		"contaCliente": 78910
+	}
+]
+  ```
+  Caso o usuário já tenha uma conta cadastrada, o retorno será do tipo:
+  ```
+ {
+	"message": "A \"contaCliente\" 78910 already exists"
+ }
+  ```
+</details>
+
+
