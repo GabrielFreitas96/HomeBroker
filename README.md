@@ -30,6 +30,6 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
 
   > Instale as dependências com `npm install` 
-  > Use o comando `npm run dev`. para subir a aplicação
-  > Crie o banco de Dados com o arquivo DadosXP.sql, para isso é necesário rodar essa querys no Workbench ou utilizando uma extensão do VSCode.
+  - Use o comando `npm run dev`. para subir a aplicação, esse comando deve ser executado no terminal do Docker
+  - Crie o banco de Dados com o arquivo DadosXP.sql, para isso é necesário rodar essa querys no Workbench ou utilizando uma extensão do VSCode.
 
