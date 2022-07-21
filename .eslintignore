@@ -1,0 +1,5 @@
+/**/fixtures/projects/back-end/.eslintrc.json
+node_modules
+./src/test/*test.ts
+src/test
+/home/gabrielfreitas/Repositorios/teste_tecnico_XP/teste-XP/src/test/contaModel.test.ts
