@@ -1,3 +1,4 @@
+// eslint-disable-next-line consistent-return
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 import connection from '../models/connection';
