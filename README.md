@@ -53,9 +53,9 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
 
 <details>
-  <summary  id="diagrama"><strong>/user</strong></summary>
+  <summary  id="diagrama"><strong>/cliente</strong></summary>
 
-  #### POST no endpoint /user
+  #### POST no endpoint /cliente
   Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas
   
   Body a ser enviado na requisição
