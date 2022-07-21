@@ -67,7 +67,40 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
     "contaCliente": 78910
   }
   ```
-  
+  > Middleware de Verificação:
+  > nameCliente :
+* não pode  ser nulo ou undefined
+* deve ser string
+* dever ter pelo menos 8 caracteres
+
+> contaCliente : 
+* não pode  ser nulo ou undefined
+* deve ser um numero
+* não deve existir no banco de dados (feito): verifyContaExist
+
+> emailCliente :
+* não pode  ser nulo ou undefined
+* deve ser uma string
+* deve passar pelo formato regex @ e .com
+
+> passwordCliente : 
+* não pode  ser nulo ou undefined
+* deve ser uma string
+* deve ter pelo menos 6 caracteres 
+> O retorno será algo do tipo :
+  ```[
+	{
+		"codCliente": 4,
+		"nameCliente": "Fernado Ribeiro",
+		"emailCliente": "fernando@outlook.com",
+		"contaCliente": 78910
+	}
+]
+  ```
+  Caso o usuário já tenha uma conta cadastrada, o retorno será do tipo:
+  ```
+ "A \"contaCliente\" 78910 already exists"
+  ``
 </details>
 
 
