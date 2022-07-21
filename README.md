@@ -48,12 +48,25 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   ![DER](./Modelagem.png)
 </details>
+## EndPoints da API e os Verbos
 
+
+details>
+  <summary  id=""><strong>/user</strong></summary>
+
+  #### POST no endpoint /user
+  Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas
+  
+  Body a ser enviado na requisição
   ```
   {
-    "displayName": "",
-    "email": "brett@email.com",
-    "password": "123456",
-    "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+    "nameCliente": "Fernando Ribeiro",
+    "emailCliente": "fernando@outlook.com",
+    "passwordCliente": "123456",
+    "contaCliente": 78910
   }
   ```
+  
+</details>
+
+
