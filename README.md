@@ -56,7 +56,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   <summary  id="diagrama"><strong>/cliente</strong></summary>
 
   #### POST no endpoint /cliente
-  Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas
+  Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas, salva a senha criptografada no banco de dados (bCrypt)
   
   Body a ser enviado na requisição
   ```
@@ -106,3 +106,51 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 </details>
 
 
+<details>
+  <summary  id="diagrama"><strong>/login</strong></summary>
+
+  #### POST no endpoint /cliente
+  Efetua o login de usuário, gerando um token de autenticação, a comparação de senha é feita com a biblioteca bcrypt
+  
+  Body a ser enviado na requisição
+  ```
+  {
+    "contaCliente": 78910
+    "passwordCliente": "123456",
+    
+  }
+  ```
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
+	
+
+> contaCliente : 
+* não pode  ser nulo ou undefined
+* deve ser um numero
+* caso não exista no banco de dados
+
+> passwordCliente : 
+* não pode  ser nulo ou undefined
+* deve ser uma string
+* deve ter pelo menos 6 caracteres 
+
+> Verifica se a conta inserida está cadastrada, caso não esteja cadastrada, retorna a mensagem
+```
+ {
+	"mesage": "A \"contaCliente\" ${contaCliente} was not found"
+ }
+ ```
+
+> Caso a senha inserida esteja incorreta: 
+  ```
+  {
+	  "message": "Invalid password"
+  }
+  ```
+> Caso a senha inserida esteja correta, retorna o token :
+  ```
+  {
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RDbGllbnRlIjo0LCJuYW1lQ2xpZW50ZSI6IkZlcm5hZG8gUmliZWlybyIsImVtYWlsQ2xpZW50ZSI6ImZlcm5hbmRvQG91dGxvb2suY29tIiwiY29udGFDbGllbnRlIjo3ODkxMCwiaWF0IjoxNjU4NDM2MTAzLCJleHAiOjE2NTg0Mzk3MDN9.LnuD6VEAa3gSHopjUbW0HuUAYp1WR_wZz_WPW2Po1rc"
+  }
+  ```
+#### Obs: esse token deve ser usado nas requisições de saque, depósito, compra e venda de ativos e quando se desejar retornar os ativos de cada cliente. 
+</details>
