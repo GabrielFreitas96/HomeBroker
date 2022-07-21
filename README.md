@@ -109,7 +109,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 <details>
   <summary  id="diagrama"><strong>/login</strong></summary>
 
-  #### POST no endpoint /cliente
+  #### POST no endpoint /login
   Efetua o login de usuário, gerando um token de autenticação, a comparação de senha é feita com a biblioteca bcrypt
   
   Body a ser enviado na requisição
@@ -154,3 +154,95 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   ```
 #### Obs: esse token deve ser usado nas requisições de saque, depósito, compra e venda de ativos e quando se desejar retornar os ativos de cada cliente. 
 </details>
+
+<details>
+  <summary  id="diagrama"><strong>/ativos</strong></summary>
+  #### GET no endpoint /ativo
+  Busca todos os ativos disponivéis na tabela Ativo para serem comercializadas 
+  retorno do tipo:
+  ```[
+    {
+      "codAtivo": 1,
+      "nameAtivo": "QUAT",
+      "qtdeAtivo": 1000,
+      "valor": "10.00"
+    },
+    {
+      "codAtivo": 2,
+      "nameAtivo": "Gol",
+      "qtdeAtivo": 2000,
+      "valor": "20.00"
+    },
+    {
+      "codAtivo": 3,
+      "nameAtivo": "Armac",
+      "qtdeAtivo": 3000,
+      "valor": "30.00"
+    },
+    {
+      "codAtivo": 4,
+      "nameAtivo": "Azul",
+      "qtdeAtivo": 4000,
+      "valor": "40.00"
+    }
+  ]
+  ```
+  #### GET no endpoint /ativo:id
+  Busca o ativo correspondente ao id passado na rota
+  ```
+  [
+    {
+      "codAtivo": 1,
+      "nameAtivo": "QUAT",
+      "qtdeAtivo": 1000,
+      "valor": "10.00"
+    }
+  ]
+```
+  Caso o id não correponda a nenhum produto retorna a mensagem:
+  ```
+  {
+    "message": "O id 10 was not found"
+  }
+  ```
+  #### GET no endpoint /ativo/cliente:id
+  Retorna todos os ativos que pertencem ao cliente do id enviado, essa rota precisa de um token, deve ser inserir o mesmo nas rotas
+   ```
+    [
+    {
+      "codCliente": 1,
+      "codAtivo": 1,
+      "nameAtivo": "QUAT",
+      "qtdeClienteAtivo": 10,
+      "valor": "10.00"
+    },
+    {
+      "codCliente": 1,
+      "codAtivo": 2,
+      "nameAtivo": "Gol",
+      "qtdeClienteAtivo": 20,
+      "valor": "20.00"
+    },
+    {
+      "codCliente": 1,
+      "codAtivo": 3,
+      "nameAtivo": "Armac",
+      "qtdeClienteAtivo": 5,
+      "valor": "30.00"
+    },
+    {
+      "codCliente": 1,
+      "codAtivo": 4,
+      "nameAtivo": "Azul",
+      "qtdeClienteAtivo": 2,
+      "valor": "40.00"
+    }
+  ]
+  ```
+  Caso o cliente não tenha ativos comprados retorna a mensagem
+  ```
+  {
+	"message": "O id 4 was not found with any assets"
+  }
+  ```
+  </details>
