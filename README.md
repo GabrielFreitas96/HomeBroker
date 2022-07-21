@@ -158,8 +158,8 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 <details>
   <summary  id="diagrama"><strong>/ativos</strong></summary>
   #### GET no endpoint /ativo
-  Busca todos os ativos disponivéis na tabela Ativo para serem comercializadas 
-  retorno do tipo:
+  Busca todos os ativos disponivéis na tabela Ativo para serem comercializadas retorno do tipo:
+
   ```
     [
       {
