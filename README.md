@@ -48,11 +48,12 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   ![DER](./Modelagem.png)
 </details>
+
 ## EndPoints da API e os Verbos
 
 
-details>
-  <summary  id=""><strong>/user</strong></summary>
+<details>
+  <summary  id="diagrama"><strong>/user</strong></summary>
 
   #### POST no endpoint /user
   Adiciona um Cliente na tabela de clientes e também insere uma conta na tabela de Contas
