@@ -13,11 +13,11 @@ const verifyCodClienteCodAtivo = async (
   // console.log('contaCliente', contaCliente);
   const clienteExist = await clienteModel.getClientById(+codCliente);
   if (clienteExist.length === 0) {
-    return res.status(ObjCode.NOT_FOUND).json(`O id of client ${codCliente} was not found`);
+    return res.status(ObjCode.NOT_FOUND).json({ message: `O id of client ${codCliente} was not found` });
   }
   const ativoExist = await ativoModel.getById(+codAtivo);
   if (ativoExist.length === 0) {
-    return res.status(ObjCode.NOT_FOUND).json(`O id of ativo ${codAtivo} was not found`);
+    return res.status(ObjCode.NOT_FOUND).json({ message: `O id of ativo ${codAtivo} was not found` });
   }
   const findClienteAtivo = await clienteAtivoModel.getByClienteIdAtivoId(codCliente, codAtivo);
   if (findClienteAtivo.length > 0) {
@@ -26,7 +26,7 @@ const verifyCodClienteCodAtivo = async (
   }
   const { affectedRows } = await clienteAtivoModel.createClienteAtivo(codCliente, codAtivo, 0);
   if (affectedRows !== 1) {
-    return res.status(ObjCode.GENERAL).json('Unexpected Error');
+    return res.status(ObjCode.GENERAL).json( {message: 'Unexpected Error' });
   }
   return next();
 };

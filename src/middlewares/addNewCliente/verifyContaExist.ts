@@ -12,7 +12,7 @@ const verifyContaExist = async (
   const isConta = await contaModel.getByConta(+contaCliente);
   console.log(isConta);
   if (isConta) {
-    return res.status(ObjCode.ALREADY_EXISTS).json(`A "contaCliente" ${contaCliente} already exists`);
+    return res.status(ObjCode.ALREADY_EXISTS).json({ message: `A "contaCliente" ${contaCliente} already exists`});
   }
   return next();
 };
