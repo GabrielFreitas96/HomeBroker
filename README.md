@@ -286,7 +286,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   
   ```
   Se tudo der certo apresenta o retorno do saldo do Cliente
-  
+
   ```
   {
     "codCliente":  4
@@ -331,7 +331,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   ```
   {
     "codCliente":  4
-    "valor":  10000 
+    "valor":  0 
   }
   ```
   </details>
