@@ -67,7 +67,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
     "contaCliente": 78910
   }
   ```
-  > Middleware de Verificação:
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
 	
 > nameCliente :
 * não pode  ser nulo ou undefined
