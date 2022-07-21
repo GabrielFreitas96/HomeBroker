@@ -160,7 +160,8 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   #### GET no endpoint /ativo
   Busca todos os ativos disponivéis na tabela Ativo para serem comercializadas 
   retorno do tipo:
-  ```[
+  ```
+  [
     {
       "codAtivo": 1,
       "nameAtivo": "QUAT",
@@ -186,6 +187,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
       "valor": "40.00"
     }
   ]
+
   ```
   #### GET no endpoint /ativo:id
   Busca o ativo correspondente ao id passado na rota
@@ -198,12 +200,14 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
       "valor": "10.00"
     }
   ]
+
 ```
   Caso o id não correponda a nenhum produto retorna a mensagem:
   ```
   {
     "message": "O id 10 was not found"
   }
+
   ```
   #### GET no endpoint /ativo/cliente:id
   Retorna todos os ativos que pertencem ao cliente do id enviado, essa rota precisa de um token, deve ser inserir o mesmo nas rotas
@@ -238,11 +242,13 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
       "valor": "40.00"
     }
   ]
+
   ```
   Caso o cliente não tenha ativos comprados retorna a mensagem
   ```
-  {
-	"message": "O id 4 was not found with any assets"
-  }
+    {
+	  "message": "O id 4 was not found with any assets"
+   }
+
   ```
   </details>
