@@ -14,7 +14,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 *nodemon
 *docker
 
-##Instalando e Rodando a 
+## Instalando e Rodando a 
   <summary><strong>🐳Utilizando o Docker</strong></summary><br />
   
   ## Com Docker
@@ -22,7 +22,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   > Rode os serviços `node` e `db` com o comando `docker-compose up -d`.
   - Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queria fazer uso da aplicação em containers
-  - Esses serviços irão inicializar um container chamado `teste_XP` e outro chamado `este_XP_db`.
+  - Esses serviços irão inicializar um container chamado `teste_XP` e outro chamado `teste_XP_db`.
   - A partir daqui você pode rodar o container `teste_XP` via CLI ou abri-lo no VS Code com a extensão do Docker.
 
   > Use o comando `docker exec -it teste_XP bash`.
