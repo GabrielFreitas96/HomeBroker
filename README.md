@@ -56,6 +56,31 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   A autenticação verifica o codCliente, logo, o token de um cliente não permite realizar ações para outros usuários.
 
 </details>
+
+<details>
+  <summary  id="diagrama"><strong>Desafio e experiência ao desenvolver esse projeto</strong></summary>
+
+ <p align="left">   A experiência foi intensa,  acima de tudo foi muito gratificante, desde o primeiro momento tentei me desafiar como pessoa programadora júnior que está em processo de aprendizado.
+Minha ideia foi  desenvolver esse projeto usando TypeScript, uma linguagem que apreendi a pouco tempo e ainda não estou totalmente familiarizado. Desde o inicio tentei aproveitar a oportunidade para fazer algo novo e apreender mais.
+
+A minha ideia foi pensar na implementação de um sistema de autenticação mais eficiente como o bcrypt, biblioteca responsável por gerar uma hash no momento de cadastro do usuário e mandar essa mesma ao banco de dados. Desse modo, o banco não possui a senha do usuário literalmente, mas sim uma senha criptografada.
+Outro ponto de desafio foi utilizar o JWT para que os endpoints fossem acessador mediante ao uso de um token.
+
+Na concepção desse projeto, minha idéia era possibilitar que o usuário pudesse  fazer depósitos em sua conta digital, realizar saques, fazer a operação de compra e venda de ativos, de modo que esses valores fossem verificados de 4 modos
+
+1) O usuário não pode comprar mais ações que aquelas  disponíveis na corretora, essa regra foi também aplicada para o cenário em que número de ações a serem compradas é igual a oferta de ações da corretora.  Essa ideia é uma implementação pensando que na realidade é quase impossível que um cliente compre todas as ações de um determinado ativo  disponíveis em uma corretora, mas caso ele tente fazer a compra, não será possível.
+
+2) Fazer a verificação de que o usuário só pode vender o número de ações que ele possui, nesse caso ele não pode “operar vendido”, quando o cliente vende mais ações de um determinado ativo que ele possui.
+Outro ponto é a verificação do saldo me conta e o valor da operação a ser realizada. Não  é permitido ao usuário efetuar uma compra que tivesse valor maior que seu saldo em carteira.
+
+3) O terceiro ponto é garantir que o saldo do cliente esteja sempre atualizado  nas operações de compra e venda de ações. A cada compra ou venda, um novo saldo é calculado e armazenado na tabela de Contas
+
+4) Quarto ponto é a atualização de quem é o dono de cada ativo,  quando um cliente vendesse um determinado número de acões de um ativo, a tabela ClientesAtivo deverá ser atualizado com o novo valor. E quando ele quiser vender todas as ações que possui de determinado ativo, a linha que corresponde a essa operação deverá ser excluída da tabela ClientesAtivos.
+
+Os próximos passos para aprimoramento dessa aplicação, melhorar os testes, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados. </p>
+
+</details>
+
 ## EndPoints da API e os Verbos
 
 
