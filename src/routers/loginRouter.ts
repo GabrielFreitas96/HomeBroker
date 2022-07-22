@@ -22,7 +22,7 @@ loginRouter.post('/', contaPasswordLogin, verifyContaLogin, loginController.make
  *         - contaCliente
  *         - passwordCliente
  *       properties:
- *         codCliente:
+ *         contaCliente:
  *           type: number
  *         passwordCliente:
  *           type: string
@@ -35,9 +35,7 @@ loginRouter.post('/', contaPasswordLogin, verifyContaLogin, loginController.make
  *  /login:
  *    post:
  *      tags: [Login]
- *      description: Realiza a venda de ativos de um cliente
- *      security:
- *        - bearerAuth: []  
+ *      description: Realiza a venda de ativos de um cliente 
  *      requestBody:
  *        required: true
  *        content:
