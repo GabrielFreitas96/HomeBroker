@@ -337,8 +337,9 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   </details>
 
   <details>
-    <summary  id="diagrama"><strong>/ivestimento</strong></summary>
-    #### POST /investimento/comprar
+  <summary  id="diagrama"><strong>/ivestimento</strong></summary>
+
+  #### POST /investimento/comprar
 
       Body a ser enviado na requisição
 
@@ -387,7 +388,7 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 	{}
   ]
   ```
-  #### POST /investimento/vender
+  #### PUT /investimento/vender
   Body a ser enviado na requisição
 
   ```
@@ -431,4 +432,10 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Atualiza o saldo na tabelas de Contas, saldo do cliente [saldo = saldo Anterior +  (qtdeAtivosVendidos X valor unitário)] 
   Atualiza  a qtdeAtivos na Tabela ClientesAtivos, ou exclui, caso o cliente venda todos os seus ativos
   Atualiza a qtdeAtivo na Tabela de Ativos qtdeAtivos =  qtdeAtivosAnterior + qtdeVendida
+
+  ```
+  [
+	{}
+  ]
+  ```
   </details>
