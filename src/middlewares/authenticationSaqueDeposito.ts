@@ -2,19 +2,21 @@ import { NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import ObjCode from '../utils/ObjCodes';
 import decodeToken from '../utils/decodeToken';
+import splitString from '../utils/split';
 
 dotenv.config();
 
 const authenticationSaqueDeposito = (req: Request, res: Response, next: NextFunction) => {
   const auth = req.headers.authorization;
   const { codCliente } = req.body;
-  const [, token] : any = auth?.split(' ');
+  // const [, token] : any = auth?.split(' ');
   //console.log('resultado do split', token);
   // console.log('id', typeof id);
   // console.log('token no middleware verify', token);
-  if (!token) {
+  if (!auth) {
     return res.status(ObjCode.UNAUTHORIZED).json({ message: 'Token not found' });
   }
+  const token = splitString(auth);
   try {
     // const decoded = jwt.verify(token, secret);
     // console.log('decoded no middleware', decoded);
