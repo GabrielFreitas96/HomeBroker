@@ -338,17 +338,18 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   <details>
     <summary  id="diagrama"><strong>/ivestimento</strong></summary>
-
-      #### POST /investimento/comprar
+    
+    #### POST /investimento/comprar
 
       Body a ser enviado na requisição
-      
+
       ```
-      {
-      "codCliente": 1,
-      "codAtivo": 4,
-      "qtdeAtivo": 100
-      }
+        {
+        "codCliente": 1,
+        "codAtivo": 4,
+        "qtdeAtivo": 100
+        }
+        
       ```
   > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
 
