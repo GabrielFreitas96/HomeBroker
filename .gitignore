@@ -1,2 +1,4 @@
 node_modules/
 save.json
+../src/test/controllers
+ ./src/test/controllers/
