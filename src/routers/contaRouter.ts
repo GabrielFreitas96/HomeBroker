@@ -20,7 +20,7 @@ contaRouter.put('/deposito', authenticationSaqueDeposito, depositoSaque, contaCo
  *          application/json:
  *            schema:
  *              type: object
- *              $ref: '#components/schemas/Conta'
+ *              $ref: '#components/schemas/Valor'
  *      responses:
  *        200:
  *          content:
@@ -28,7 +28,7 @@ contaRouter.put('/deposito', authenticationSaqueDeposito, depositoSaque, contaCo
  *              schema:
  *                type: array
  *                items:
- *                  $ref: '#components/schemas/Conta'  
+ *                  $ref: '#components/schemas/Saldo'  
  */
 contaRouter.put('/saque', authenticationSaqueDeposito, depositoSaque, contaController.contaSaque);
 /**
@@ -45,7 +45,7 @@ contaRouter.put('/saque', authenticationSaqueDeposito, depositoSaque, contaContr
  *          application/json:
  *            schema:
  *              type: object
- *              $ref: '#components/schemas/Conta'
+ *              $ref: '#components/schemas/Valor'
  *      responses:
  *        200:
  *          content:
@@ -53,7 +53,7 @@ contaRouter.put('/saque', authenticationSaqueDeposito, depositoSaque, contaContr
  *              schema:
  *                type: array
  *                items:
- *                  $ref: '#components/schemas/Conta'  
+ *                  $ref: '#components/schemas/Saldo'  
  */
 contaRouter.get('/:id', authenticationConta, contaController.getByCodCliente);
 /** 
@@ -66,7 +66,25 @@ contaRouter.get('/:id', authenticationConta, contaController.getByCodCliente);
  * @swagger
  * components:
  *   schemas:
- *     Conta:
+ *     Valor:
+ *       type : object
+ *       required:
+ *         - codCliente
+ *         - valor
+ *       properties:
+ *         codCliente:
+ *           type: number
+ *         valor:
+ *           type: number
+ *       example:
+ *         codCliente: 1
+ *         valor : 10000.00
+ */
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *    Saldo:
  *       type : object
  *       required:
  *         - codCliente
@@ -100,6 +118,6 @@ contaRouter.get('/:id', authenticationConta, contaController.getByCodCliente);
  *              schema:
  *                type: array
  *                items:
- *                  $ref: '#components/schemas/Conta'  
+ *                  $ref: '#components/schemas/Saldo'  
  */
 export default contaRouter;
