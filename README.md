@@ -338,7 +338,6 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 
   <details>
     <summary  id="diagrama"><strong>/ivestimento</strong></summary>
-    
     #### POST /investimento/comprar
 
       Body a ser enviado na requisição
@@ -388,5 +387,5 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 	{}
   ]
   ```
-  #### POST /investimento/comprar
+  #### POST /investimento/saque
   </details>
