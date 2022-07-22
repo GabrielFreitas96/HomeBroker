@@ -75,6 +75,7 @@ contaRouter.get('/:id', authenticationConta, contaController.getByCodCliente);
  *         codCliente:
  *           type: number
  *         saldo:
+ *           type: number
  *       example:
  *         codCliente: 1
  *         saldo : 10000.00
