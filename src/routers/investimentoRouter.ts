@@ -33,7 +33,7 @@ investimentoRouter.put('/vender', authenticationSaqueDeposito, investimentoCompr
  *       example:
  *         codCliente: 1
  *         codAtivo: 3
- *         saldo : 2
+ *         qtdeAtivo : 2
  */
 /**
  * @swagger
@@ -62,7 +62,7 @@ export default investimentoRouter;
 /**
  * @swagger
  *  /investimento/comprar:
- *    put:
+ *    post:
  *      tags: [Investimento]
  *      description: Realiza a compra de ativos de um cliente
  *      security:

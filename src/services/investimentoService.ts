@@ -83,11 +83,13 @@ const buyAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number)
   console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
   console.log('conta Cliente', codConta, saldo);
   const saldoOperation = qtdeAtivo * valor;
+  console.log('saldo da operação');
   if (saldoOperation > saldo) {
     const response:IObjResponse = { status: ObjCode.INCORRECT_TYPE, message: 'Insufficient Funds' };
     return response;
   }
   const newSaldo = Math.round((+saldo - saldoOperation) * 100) / 100;
+  console.log('newsaldo', newSaldo)
   const newQtdeCorretora = +qtdeAtivoCorretora - qtdeAtivo;
   const newQtdeCliente = findClienteAtivo[0].qtdeAtivo + qtdeAtivo;
   const { affectedRows } = await contaModel.updateSaldo(codConta, newSaldo);
