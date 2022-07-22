@@ -387,5 +387,48 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 	{}
   ]
   ```
-  #### POST /investimento/saque
+  #### POST /investimento/vender
+  Body a ser enviado na requisição
+
+  ```
+  {
+    "codCliente": 1,
+    "codAtivo": 4,
+    "qtdeAtivo": 100
+  }
+  ```
+
+  > Middleware de Verificação: verifica os dados enviados na requisição, e retorna mensagem caso não atedam aos critérios abaixo
+
+  > codCliente: 
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+
+  > valor:
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+  * deve ser maior que 0
+
+  > codCliente: 
+  * não pode  ser nulo ou undefined
+  * deve ser um numero
+
+  Quando qtdeAtivo a ser vendida é maior que a quantidade que o usuário possui, retorna a mensagem:
+
+  ```
+  {
+	"message": "\"qtdeAtivo\" #{qtdeAtivos} is invalid for sell"
+  }
+  ```
+  Quando o cliente deseja vender um ativo que ele não possui, retorna a mensagem:
+  
+  ```
+  {
+	"message": "O id of client 4 or id of asset was not found"
+  }
+  ```
+  Quando a operação é realizada as seguintes tabelas são atualizadas e respsota volta com [{}]
+  Atualiza o saldo na tabelas de Contas, saldo do cliente [saldo = saldo Anterior +  (qtdeAtivosVendidos X valor unitário)] 
+  Atualiza  a qtdeAtivos na Tabela ClientesAtivos, ou exclui, caso o cliente venda todos os seus ativos
+  Atualiza a qtdeAtivo na Tabela de Ativos qtdeAtivos =  qtdeAtivosAnterior + qtdeVendida
   </details>
