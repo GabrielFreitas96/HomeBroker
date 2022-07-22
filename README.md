@@ -7,13 +7,13 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 ## Tecnologias utilizadas
 <p align="left">Desenvolvido uando o NODE.JS e TypeScript</p>
 
-*express
-*bCrypt
-*JsonWebToken
-*eslint
-*nodemon
-*docker
-*Mysql
+* express
+* bCrypt
+* JsonWebToken
+* eslint
+* nodemon
+* docker
+* Mysql
 
 ## Instalando e Rodando a API
   <summary><strong>🐳Utilizando o Docker</strong></summary><br />
