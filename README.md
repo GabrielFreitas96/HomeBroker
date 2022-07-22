@@ -337,12 +337,12 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   </details>
 
   <details>
-
     <summary  id="diagrama"><strong>/ivestimento</strong></summary>
 
       #### POST /investimento/comprar
 
       Body a ser enviado na requisição
+      
       ```
       {
       "codCliente": 1,
