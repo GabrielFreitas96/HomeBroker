@@ -6,8 +6,10 @@ import decodeToken from '../utils/decodeToken';
 dotenv.config();
 
 const authenticationSaqueDeposito = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization;
+  const auth = req.headers.authorization;
   const { codCliente } = req.body;
+  const [, token] : any = auth?.split(' ');
+  //console.log('resultado do split', token);
   // console.log('id', typeof id);
   // console.log('token no middleware verify', token);
   if (!token) {
