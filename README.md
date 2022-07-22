@@ -49,6 +49,13 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   ![DER](./Modelagem.png)
 </details>
 
+<details>
+  <summary  id="diagrama"><strong>Middleware de Autenticação</strong></summary>
+  Todas as rotas, com exceção da /ativos e /ativos/id, necessitam de um token para realizar as ações.
+  Portanto, ao fazer o login, deve se copiar token retornado. Esse token deve sr inserido no headers com a chave authorization.
+  A autenticação verifica o codCliente, logo, o token de um cliente não permite realizar ações para outros usuários.
+
+</details>
 ## EndPoints da API e os Verbos
 
 
