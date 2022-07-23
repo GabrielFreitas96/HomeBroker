@@ -2,9 +2,9 @@
 
 ## Descrição do Projeto
 <p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
-Api com modelo MSC RESTFUL, as funções são dividas entre camadas. A camada model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de recber as requisições e devolver a resposta.
+Api com modelo MSC RESTFUL, as funções são dividas entre camadas. A camada model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de receber as requisições e devolver a resposta.
 O usuário pode se cadastrar, efetuar o login.
-O usuário pode fazer depósito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o salo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Clientes, Ativos, Contas e ClientesAtivos</p>
+O usuário pode fazer depósito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o saldo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Clientes, Ativos, Contas e ClientesAtivos</p>
 
 ## Tecnologias utilizadas
 <p align="left">Desenvolvido uando o NODE.JS e TypeScript</p>
@@ -16,6 +16,9 @@ O usuário pode fazer depósito e saques em sua carteira digital.É possivel faz
 * nodemon
 * docker
 * Mysql
+* mocha
+* sinon
+* chai
 
 ## Instalando e Rodando a API
   <summary><strong>🐳Utilizando o Docker</strong></summary><br />
