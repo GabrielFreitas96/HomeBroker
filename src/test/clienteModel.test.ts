@@ -1,11 +1,8 @@
-// eslint-disable-next-line consistent-return
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 import { describe } from 'mocha';
 import connection from '../models/connection';
-import contaModel from '../models/contaModel';
 import clienteModel from '../models/clienteModel';
-import { getMaxListeners } from 'process';
 import ICliente from '../interfaces/ICliente';
 
 describe('Busca por um cliente a partir da conta', () => {
@@ -97,13 +94,19 @@ describe('Cria um novo Cliente na tabela Clientes', () => {
   });
   describe('Retorna um array vazio quando não for inserido com sucesso', () => {
     const result = [[]] as any;
+    const cliente: ICliente = {codCliente: 1,
+      nameCliente: 'Gabriel Freitas',
+      emailCliente:'gabriel@getMaxListeners.com',
+      passwordCliente: '123456',
+      contaCliente: '12345',
+    };
     let stubeResult : sinon.SinonStub;
     before(async () => {
       stubeResult = sinon.stub(connection, 'execute').resolves(result);
     });
     after(() => { stubeResult.restore(); })
-    it('Espera o retorno ser true', async () => {
-      const respose = await contaModel.addConta(1);
+    it('Espera o retorno ser um array vazio', async () => {
+      const respose = await clienteModel.addUser(cliente, 'aasfdfdfdddfdf');
       expect(respose).to.be.empty;
     });
   });
