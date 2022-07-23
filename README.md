@@ -1,7 +1,9 @@
 # Teste-Tecnico-XP
 
 ## Descrição do Projeto
-<p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. O usuário pode se cadastrar, efetuar o login,
+<p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
+Api com modelo MSC RESTFUL, as funções são divida entre camadas. A camada model é responsável pela conexãop com o bando de dados, a camda service fica responsável pela imolementação da regra de negócio e a controller se encarrega de recber as requisições e devolver a resposta.
+O usuário pode se cadastrar, efetuar o login,
 O usuário pode fazer deposito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o salo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Cleintes, Ativos, Contas e ClientesAtivos</p>
 
 ## Tecnologias utilizadas
@@ -58,10 +60,11 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
 </details>
 
 <details>
-  <summary  id="diagrama"><strong>Desafio e experiência ao desenvolver esse projeto</strong></summary>
+  <summary  id="diagrama"><strong>Desafio, Experiência  e Melhorias Futuras</strong></summary>
 
  <p align="left">   A experiência foi intensa,  acima de tudo foi muito gratificante, desde o primeiro momento tentei me desafiar como pessoa programadora júnior que está em processo de aprendizado.
-Minha ideia foi  desenvolver esse projeto usando TypeScript, uma linguagem que apreendi a pouco tempo e ainda não estou totalmente familiarizado. Desde o inicio tentei aproveitar a oportunidade para fazer algo novo e apreender mais.
+Minha ideia foi  desenvolver esse projeto usando TypeScript, uma linguagem que apreendi a pouco tempo e ainda não tenho tanta experiência. Desde o inicio tentei aproveitar a oportunidade para fazer algo novo e apreender mais. O TypeScrip traz vantagens como a tipagem de cada função, sendo possível saber o que é esperado.
+Sua aplicabilidade se faz extremamente quando se deseja dar escabilidade a alguma aplicação.
 
 A minha ideia foi pensar na implementação de um sistema de autenticação mais eficiente como o bcrypt, biblioteca responsável por gerar uma hash no momento de cadastro do usuário e mandar essa mesma ao banco de dados. Desse modo, o banco não possui a senha do usuário literalmente, mas sim uma senha criptografada.
 Outro ponto de desafio foi utilizar o JWT para que os endpoints fossem acessador mediante ao uso de um token.
@@ -77,10 +80,24 @@ Outro ponto é a verificação do saldo me conta e o valor da operação a ser r
 
 4) Quarto ponto é a atualização de quem é o dono de cada ativo,  quando um cliente vendesse um determinado número de acões de um ativo, a tabela ClientesAtivo deverá ser atualizado com o novo valor. E quando ele quiser vender todas as ações que possui de determinado ativo, a linha que corresponde a essa operação deverá ser excluída da tabela ClientesAtivos.
 
-Os próximos passos para aprimoramento dessa aplicação, melhorar os testes, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados. </p>
+Os próximos passos para aprimoramento dessa aplicação, melhorar os testes, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados.
+Construção de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários</p>
 
 </details>
+<details>
+  <summary  id="diagrama"><strong>Processo de Autenticação</strong></summary>
+  Algumas rotas necessitam da utilização de um token para o acesso, para isso, o token deve ser gerado ao se fazer o login. O mesmo token deve ser enviado com a chave authorization como parte do headers da requisição.
 
+  Exemplo de token :
+  ```
+  {
+    authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RDbGllbnRlIjoxLCJuYW1lQ2xpZW50ZSI6IkdhYnJpZWwgRnJlaXRhcyIsImVtYWlsQ2xpZW50ZSI6ImdhYnJpZWxmcmVpdGFzQGdtYWlsLmNvbSIsImNvbnRhQ2xpZW50ZSI6MTIzNDUsImlhdCI6MTY1ODU5ODE0OSwiZXhwIjoxNjU4NjAxNzQ5fQ.m4TKSbFr29qIxIZKSGiV0e_e-AAyyBkGgkpBUHudQxY
+  } 
+  ```
+  OBS: Caso a utilização seja por meio do INSOMNIA ou POSTMAN, é necessario inserir quaquer string antes do token com algum espaço para o mesmo. Conforme demonstrado no exemplo acima.
+  Isso é necessário já que no Swagger, esse processo acontece com a inserção do Bearer antes do token.
+
+</details>
 ## EndPoints da API e os Verbos
 
 
