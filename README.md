@@ -2,9 +2,9 @@
 
 ## Descrição do Projeto
 <p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
-Api com modelo MSC RESTFUL, as funções são divida entre camadas. A camada model é responsável pela conexãop com o bando de dados, a camda service fica responsável pela imolementação da regra de negócio e a controller se encarrega de recber as requisições e devolver a resposta.
-O usuário pode se cadastrar, efetuar o login,
-O usuário pode fazer deposito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o salo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Cleintes, Ativos, Contas e ClientesAtivos</p>
+Api com modelo MSC RESTFUL, as funções são dividas entre camadas. A camada model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de recber as requisições e devolver a resposta.
+O usuário pode se cadastrar, efetuar o login.
+O usuário pode fazer depósito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o salo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Clientes, Ativos, Contas e ClientesAtivos</p>
 
 ## Tecnologias utilizadas
 <p align="left">Desenvolvido uando o NODE.JS e TypeScript</p>
@@ -57,6 +57,16 @@ O usuário pode fazer deposito e saques em sua carteira digital.É possivel faze
   Portanto, ao fazer o login, deve se copiar token retornado. Esse token deve sr inserido no headers com a chave authorization.
   A autenticação verifica o codCliente, logo, o token de um cliente não permite realizar ações para outros usuários.
 
+  Exemplo de token :
+  ```
+  {
+    authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RDbGllbnRlIjoxLCJuYW1lQ2xpZW50ZSI6IkdhYnJpZWwgRnJlaXRhcyIsImVtYWlsQ2xpZW50ZSI6ImdhYnJpZWxmcmVpdGFzQGdtYWlsLmNvbSIsImNvbnRhQ2xpZW50ZSI6MTIzNDUsImlhdCI6MTY1ODU5ODE0OSwiZXhwIjoxNjU4NjAxNzQ5fQ.m4TKSbFr29qIxIZKSGiV0e_e-AAyyBkGgkpBUHudQxY
+  } 
+  ```
+  OBS: Caso a utilização seja por meio do INSOMNIA ou POSTMAN, é necessario inserir quaquer string antes do token com algum espaço para o mesmo. Conforme demonstrado no exemplo acima.
+  Isso é necessário já que no Swagger, esse processo acontece com a inserção do Bearer antes do token.
+  Para utilizar o Swagger, pasta acessar a rota /docs.
+
 </details>
 
 <details>
@@ -84,20 +94,7 @@ Os próximos passos para aprimoramento dessa aplicação, melhorar os testes, cr
 Construção de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários</p>
 
 </details>
-<details>
-  <summary  id="diagrama"><strong>Processo de Autenticação</strong></summary>
-  Algumas rotas necessitam da utilização de um token para o acesso, para isso, o token deve ser gerado ao se fazer o login. O mesmo token deve ser enviado com a chave authorization como parte do headers da requisição.
 
-  Exemplo de token :
-  ```
-  {
-    authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RDbGllbnRlIjoxLCJuYW1lQ2xpZW50ZSI6IkdhYnJpZWwgRnJlaXRhcyIsImVtYWlsQ2xpZW50ZSI6ImdhYnJpZWxmcmVpdGFzQGdtYWlsLmNvbSIsImNvbnRhQ2xpZW50ZSI6MTIzNDUsImlhdCI6MTY1ODU5ODE0OSwiZXhwIjoxNjU4NjAxNzQ5fQ.m4TKSbFr29qIxIZKSGiV0e_e-AAyyBkGgkpBUHudQxY
-  } 
-  ```
-  OBS: Caso a utilização seja por meio do INSOMNIA ou POSTMAN, é necessario inserir quaquer string antes do token com algum espaço para o mesmo. Conforme demonstrado no exemplo acima.
-  Isso é necessário já que no Swagger, esse processo acontece com a inserção do Bearer antes do token.
-
-</details>
 ## EndPoints da API e os Verbos
 
 
