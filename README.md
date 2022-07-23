@@ -36,7 +36,8 @@ O usuário pode fazer depósito e saques em sua carteira digital.É possivel faz
 
   > Instale as dependências com `npm install` 
   - Use o comando `npm run dev`. para subir a aplicação, esse comando deve ser executado no terminal do Docker
-  - Crie o banco de Dados com o arquivo DadosXP.sql, para isso é necesário rodar essa querys no Workbench ou utilizando uma extensão do VSCode.
+  - Crie o banco de Dados com o arquivo DadosXP.sql, para isso é necesário rodar essa querys no Workbench ou utilizando uma extensão do VSCode para criar o banco.
+  - Use o comando `npm run test`. para rodar os testes unitários.
 
 ## Utilizando a API
 > Para melhor utilização, tenha em mente a utilização atráves do insomnia ou Postman, para fazer as requisições.
