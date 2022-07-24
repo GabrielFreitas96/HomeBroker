@@ -68,11 +68,6 @@ const sellAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number
 const buyAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number):
  Promise<IObjResponse> => {
   const findClienteAtivo = await clienteAtivoModel.getByClienteIdAtivoId(codCliente, codAtivo);
-  // if (findClienteAtivo.length === 0) {
-  // const response:IObjResponse = {  status: ObjCode.NOT_FOUND,
-  // message: `O id of client ${codCliente} or id of asset was not found` };
-  //   return response;
-  // }
   const ativoTarget = await ativoModel.getById(+codAtivo);
   if (ativoTarget[0].qtdeAtivo <= qtdeAtivo) {
     const response:IObjResponse = { status: ObjCode.NOT_FOUND, message: `"qtdeAtivo" ${qtdeAtivo} is invalid to buy` };
@@ -89,7 +84,7 @@ const buyAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number)
     return response;
   }
   const newSaldo = Math.round((+saldo - saldoOperation) * 100) / 100;
-  console.log('newsaldo', newSaldo)
+  // console.log('newsaldo', newSaldo)
   const newQtdeCorretora = +qtdeAtivoCorretora - qtdeAtivo;
   const newQtdeCliente = findClienteAtivo[0].qtdeAtivo + qtdeAtivo;
   const { affectedRows } = await contaModel.updateSaldo(codConta, newSaldo);
