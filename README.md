@@ -84,7 +84,7 @@ Sua aplicabilidade se faz extremamente necessário quando se deseja dar escabili
 A minha ideia foi pensar na implementação de um sistema de autenticação mais eficiente como o bcrypt, biblioteca responsável por gerar uma hash no momento de cadastro do usuário e mandar essa mesma ao banco de dados. Desse modo, o banco não possui a senha do usuário literalmente, mas sim uma senha criptografada.
 Outro sistema de autenticação foi a utilização  do JWT, de modo que os endpoints são acessados mediante  uso de um token, o qual é gerado no momento de fazer o login.
 
-Na concepção desse projeto, minha idéia era possibilitar que o usuário pudesse  fazer depósitos em sua conta digital, realizar saques, fazer a operação de compra e venda de ativos, de modo que esses valores fossem verificados de 4 modos
+Na concepção desse projeto, minha idéia era possibilitar que o usuário pudesse  fazer depósitos em sua conta digital, realizar saques, fazer a operação de compra e venda de ativos, de modo que esses valores fossem verificados de 5 modos
 
 1) O usuário não pode comprar mais ações que aquelas  disponíveis na corretora, essa regra foi também aplicada para o cenário em que número de ações a serem compradas é igual a oferta de ações da corretora.  Essa ideia é uma implementação pensando que na realidade é quase impossível que um cliente compre todas as ações de um determinado ativo  disponíveis em uma corretora, mas caso ele tente fazer a compra, não será possível.
 
@@ -95,12 +95,15 @@ Outro ponto é a verificação do saldo em conta e o valor da operação a ser r
 
 4) Quarto ponto é a atualização do número de ativo que cada cliente possui. Quando um cliente vendesse um determinado número de acões de um ativo, a tabela ClientesAtivo deverá ser atualizado com o novo valor. E quando ele quiser vender todas as ações que possui de determinado ativo, a linha que corresponde a essa operação deverá ser excluída da tabela ClientesAtivos. Outro cenário considerado é que o cliente não pode vender um ativo que ele não possui.
 
+5) Para depósitos e saques, os valores são válidados, o cliente não pode fazer depositos nulos ou negativos. Para o saque, não é possível sacar um valor maior que o saldo disponível em conta.
+
 Uma dificuldade encontrada por mim foi a utilização do TypeScript, por ser algo relativamente novo para mim, comecei a apreender aproximadamente há  duas semanas . A solução para isso foi me dedicar mais aos estudos, observar as tipagens exigidas, construção de interfaces para serem utilizadas no código. Os testes unitários se mostraram desafiadores, uma vez que eu estava acostumado a fazer testes em JS. Para realização dos testes unitários em TS tive de recorrer a ajuda do google, no primeiro momento não obtive muito exito em entender como deveria ser feito. A melhor opção foi direcionar as buscas para os repositórios do Git Hub, onde consegui melhor entendimento e consegui produzir uma solução para a realização dos testes.
 Em virtude do tempo, não consegui cobrir a aplicação com 100% de testes unitários.
 
 
-Os próximos passos para aprimoramento dessa aplicação, melhorar os testes unitários de forma a cobrir 100% as camadas, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados.
-Além disso a costrução de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários</p>
+Os próximos passos para aprimoramento dessa aplicação saõ: melhorar os testes unitários de forma a cobrir 100% das camadas, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados.
+Além disso a costrução de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários
+</p>
 
 </details>
 
