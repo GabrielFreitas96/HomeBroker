@@ -2,7 +2,8 @@
 
 ## Descrição do Projeto
 <p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
-Api com modelo MSC RESTFUL, as funções são dividas entre camadas. A camada model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de receber as requisições e devolver a resposta.
+Desenvolvida com o modelo MSC(Model, Service, Controller) RESTFUL, as funções são dividas entre camadas.
+A model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de receber as requisições e devolver a resposta.
 O usuário pode se cadastrar, efetuar o login.
 O usuário pode fazer depósito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o saldo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Clientes, Ativos, Contas e ClientesAtivos</p>
 
@@ -76,26 +77,30 @@ O usuário pode fazer depósito e saques em sua carteira digital.É possivel faz
 <details>
   <summary  id="diagrama"><strong>Desafio, Experiência  e Melhorias Futuras</strong></summary>
 
- <p align="left">   A experiência foi intensa,  acima de tudo foi muito gratificante, desde o primeiro momento tentei me desafiar como pessoa programadora júnior que está em processo de aprendizado.
+ <p align="left">   A experiência foi intensa, acima de tudo foi muito gratificante, desde o primeiro momento tentei me desafiar como pessoa programadora júnior que está em processo de aprendizado.
 Minha ideia foi  desenvolver esse projeto usando TypeScript, uma linguagem que apreendi a pouco tempo e ainda não tenho tanta experiência. Desde o inicio tentei aproveitar a oportunidade para fazer algo novo e apreender mais. O TypeScrip traz vantagens como a tipagem de cada função, sendo possível saber o que é esperado.
-Sua aplicabilidade se faz extremamente quando se deseja dar escabilidade a alguma aplicação.
+Sua aplicabilidade se faz extremamente necessário quando se deseja dar escabilidade para a aplicação.
 
 A minha ideia foi pensar na implementação de um sistema de autenticação mais eficiente como o bcrypt, biblioteca responsável por gerar uma hash no momento de cadastro do usuário e mandar essa mesma ao banco de dados. Desse modo, o banco não possui a senha do usuário literalmente, mas sim uma senha criptografada.
-Outro ponto de desafio foi utilizar o JWT para que os endpoints fossem acessador mediante ao uso de um token.
+Outro sistema de autenticação foi a utilização  do JWT, de modo que os endpoints são acessados mediante  uso de um token, o qual é gerado no momento de fazer o login.
 
 Na concepção desse projeto, minha idéia era possibilitar que o usuário pudesse  fazer depósitos em sua conta digital, realizar saques, fazer a operação de compra e venda de ativos, de modo que esses valores fossem verificados de 4 modos
 
 1) O usuário não pode comprar mais ações que aquelas  disponíveis na corretora, essa regra foi também aplicada para o cenário em que número de ações a serem compradas é igual a oferta de ações da corretora.  Essa ideia é uma implementação pensando que na realidade é quase impossível que um cliente compre todas as ações de um determinado ativo  disponíveis em uma corretora, mas caso ele tente fazer a compra, não será possível.
 
 2) Fazer a verificação de que o usuário só pode vender o número de ações que ele possui, nesse caso ele não pode “operar vendido”, quando o cliente vende mais ações de um determinado ativo que ele possui.
-Outro ponto é a verificação do saldo me conta e o valor da operação a ser realizada. Não  é permitido ao usuário efetuar uma compra que tivesse valor maior que seu saldo em carteira.
+Outro ponto é a verificação do saldo em conta e o valor da operação a ser realizada. Não  é permitido ao usuário efetuar uma compra que tivesse valor maior que seu saldo disponível em carteira.
 
 3) O terceiro ponto é garantir que o saldo do cliente esteja sempre atualizado  nas operações de compra e venda de ações. A cada compra ou venda, um novo saldo é calculado e armazenado na tabela de Contas
 
-4) Quarto ponto é a atualização de quem é o dono de cada ativo,  quando um cliente vendesse um determinado número de acões de um ativo, a tabela ClientesAtivo deverá ser atualizado com o novo valor. E quando ele quiser vender todas as ações que possui de determinado ativo, a linha que corresponde a essa operação deverá ser excluída da tabela ClientesAtivos.
+4) Quarto ponto é a atualização do número de ativo que cada cliente possui. Quando um cliente vendesse um determinado número de acões de um ativo, a tabela ClientesAtivo deverá ser atualizado com o novo valor. E quando ele quiser vender todas as ações que possui de determinado ativo, a linha que corresponde a essa operação deverá ser excluída da tabela ClientesAtivos. Outro cenário considerado é que o cliente não pode vender um ativo que ele não possui.
 
-Os próximos passos para aprimoramento dessa aplicação, melhorar os testes, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados.
-Construção de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários</p>
+Uma dificuldade encontrada por mim foi a utilização do TypeScript, por ser algo relativamente novo para mim, comecei a apreender aproximadamente há  duas semanas . A solução para isso foi me dedicar mais aos estudos, observar as tipagens exigidas, construção de interfaces para serem utilizadas no código. Os testes unitários se mostraram desafiadores, uma vez que eu estava acostumado a fazer testes em JS. Para realização dos testes unitários em TS tive de recorrer a ajuda do google, no primeiro momento não obtive muito exito em entender como deveria ser feito. A melhor opção foi direcionar as buscas para os repositórios do Git Hub, onde consegui melhor entendimento e consegui produzir uma solução para a realização dos testes.
+Em virtude do tempo, não consegui cobrir a aplicação com 100% de testes unitários.
+
+
+Os próximos passos para aprimoramento dessa aplicação, melhorar os testes unitários de forma a cobrir 100% as camadas, criação de testes de integração, criação de um front-end, deploy da aplicação com o Banco de Dados.
+Além disso a costrução de uma tabela que fique responsável por aramazenar o histórico  de compras e vendas já realizados pelos usuários</p>
 
 </details>
 
