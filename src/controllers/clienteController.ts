@@ -6,7 +6,6 @@ const addNew = async (req: Request, res: Response): Promise<Response> => {
   const newCliente: ICliente = req.body;
   console.log('newCliente', newCliente);
   const response = await clienteService.addCliente(newCliente);
-  // console.log('response', response);
   if (response.message) {
     const { message } = response;
     return res.status(response.status).json({ message });

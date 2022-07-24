@@ -18,15 +18,15 @@ const sellAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number
   }
   const [{ codConta, saldo }] = await contaModel.getContaByCodCliente(codCliente);
   const [{ qtdeAtivo: qtdeAtivoCorretora }] = await ativoModel.getById(codAtivo);
-  console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
-  console.log('conta Cliente', codConta, saldo);
+  // console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
+  // console.log('conta Cliente', codConta, saldo);
   const saldoOperation = qtdeAtivo * findClienteAtivo[0].valor;
   const newSaldo = Math.round((+saldo + saldoOperation) * 100) / 100;
   const newqtdeCorretora = +qtdeAtivoCorretora + qtdeAtivo;
   const newQtdeCliente = findClienteAtivo[0].qtdeAtivo - qtdeAtivo;
-  console.log('novo saldo', newSaldo);
-  console.log('saldo a ser adicionado na carteira', saldoOperation);
-  console.log('nova quantidade na corretora', newqtdeCorretora);
+  // console.log('novo saldo', newSaldo);
+  // console.log('saldo a ser adicionado na carteira', saldoOperation);
+  // console.log('nova quantidade na corretora', newqtdeCorretora);
   if (findClienteAtivo[0].qtdeAtivo === qtdeAtivo) {
     const { affectedRows } = await contaModel.updateSaldo(codConta, newSaldo);
     if (affectedRows !== 1) {
@@ -80,10 +80,10 @@ const buyAtivos = async (codCliente: number, codAtivo: number, qtdeAtivo:number)
   }
   const [{ codConta, saldo }] = await contaModel.getContaByCodCliente(codCliente);
   const [{ qtdeAtivo: qtdeAtivoCorretora, valor }] = await ativoModel.getById(codAtivo);
-  console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
-  console.log('conta Cliente', codConta, saldo);
+  // console.log('ativo disponivel na corretora', qtdeAtivoCorretora);
+  // console.log('conta Cliente', codConta, saldo);
   const saldoOperation = qtdeAtivo * valor;
-  console.log('saldo da operação');
+  // console.log('saldo da operação');
   if (saldoOperation > saldo) {
     const response:IObjResponse = { status: ObjCode.INCORRECT_TYPE, message: 'Insufficient Funds' };
     return response;

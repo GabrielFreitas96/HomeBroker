@@ -6,9 +6,6 @@ import ObjCode from '../utils/ObjCodes';
 
 const makeLogin = async (contaCliente:number, passwordCliente:string): Promise<IObjResponse> => {
   const cliente = await clienteModel.getClient(contaCliente);
-  console.log('Cliente', cliente, passwordCliente);
-  // const hash = generateCryptPassword(password);
-  // const teste = '$2b$05$/m2wUGoaMKtVanarYXPN3ewV2.DQNPT1hoZaoc/2YvuCd3U70387O';
   const dbPAssword = cliente[0].passwordCliente;
   const isPasswordValid = comparePassword(passwordCliente, dbPAssword);
   if (isPasswordValid) {
@@ -16,8 +13,6 @@ const makeLogin = async (contaCliente:number, passwordCliente:string): Promise<I
     const response = { status: ObjCode.OK, token };
     return response as IObjResponse;
   }
-  // console.log('resultado da comparação', compareResult);
-  // console.log('password', hash);
   const response = { status: ObjCode.UNAUTHORIZED, message: 'Invalid password' };
   return response as IObjResponse;
 };

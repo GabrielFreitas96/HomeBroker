@@ -8,7 +8,6 @@ const verifyContaExist = async (
   next: NextFunction,
 ) => {
   const { contaCliente } = req.body;
-  // console.log('contaCliente', contaCliente);
   const isConta = await contaModel.getByConta(+contaCliente);
   console.log(isConta);
   if (isConta) {

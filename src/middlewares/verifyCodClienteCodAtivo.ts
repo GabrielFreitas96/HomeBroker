@@ -21,7 +21,7 @@ const verifyCodClienteCodAtivo = async (
   }
   const findClienteAtivo = await clienteAtivoModel.getByClienteIdAtivoId(codCliente, codAtivo);
   if (findClienteAtivo.length > 0) {
-    console.log('passou pleo findClienteAtivo');
+    // console.log('passou pleo findClienteAtivo');
     return next();
   }
   const { affectedRows } = await clienteAtivoModel.createClienteAtivo(codCliente, codAtivo, 0);

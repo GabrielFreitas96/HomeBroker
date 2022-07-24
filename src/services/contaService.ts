@@ -42,8 +42,8 @@ const contaSaque = async (codCliente: number, valor:number):Promise<IObjResponse
     return response;
   }
   const conta = await contaModel.getContaByCodCliente(codCliente);
-  console.log('conta saldo', conta[0].saldo);
-  console.log('valor', valor);
+  // console.log('conta saldo', conta[0].saldo);
+  // console.log('valor', valor);
   if (valor > (+conta[0].saldo)) {
     const response:IObjResponse = { status: ObjCode.INCORRECT_TYPE, message: 'Insufficient Funds' };
     return response;
@@ -51,7 +51,6 @@ const contaSaque = async (codCliente: number, valor:number):Promise<IObjResponse
   const newSaldo = Math.round((+conta[0].saldo - +valor) * 100) / 100;
   // console.log(newSaldo);
   const { affectedRows } = await contaModel.updateSaldo(conta[0].codConta, newSaldo);
-  // console.log('afect', affectedRows);
   if (affectedRows !== 1) {
     const response:IObjResponse = { status: ObjCode.GENERAL, message: 'Unexpected Error' };
     return response;
