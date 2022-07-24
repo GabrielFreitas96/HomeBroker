@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 <p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
-Desenvolvida com o modelo MSC(Model, Service, Controller) RESTFUL, as funções são dividas entre camadas.
+Desenvolvida com o modelo MSC(Model, Service, Controller) REST, as funções são dividas entre camadas.
 A model é responsável pela conexão com o bando de dados, a camada service fica responsável pela implementação da regra de negócio e a controller se encarrega de receber as requisições e devolver a resposta.
 O usuário pode se cadastrar, efetuar o login.
 O usuário pode fazer depósito e saques em sua carteira digital.É possivel fazer compra de ações(ativos) e também a venda, ao se comprar ou vender, o saldo do cliente é atualizado. Foi utilizado um banco de dados relacionais, o MySql para a crição das tabelas Clientes, Ativos, Contas e ClientesAtivos</p>
