@@ -1,4 +1,4 @@
-# Teste-Tecnico-XP
+# Home Broker
 
 ## Descrição do Projeto
 <p align="left">Api para gerenciar um sistema de compra e venda de ações de uma corretora. 
